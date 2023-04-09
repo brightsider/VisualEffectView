@@ -9,7 +9,7 @@
 import UIKit
 
 /// VisualEffectView is a dynamic background blur view.
-open class VisualEffectView: UIVisualEffectView {
+@objc open class VisualEffectView: UIVisualEffectView {
     
     /// Returns the instance of UIBlurEffect.
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
@@ -19,7 +19,7 @@ open class VisualEffectView: UIVisualEffectView {
      
      The default value is nil.
      */
-    open var colorTint: UIColor? {
+    @objc open var colorTint: UIColor? {
         get {
             if #available(iOS 14, *) {
                 return ios14_colorTint
@@ -42,7 +42,7 @@ open class VisualEffectView: UIVisualEffectView {
      Don't use it unless `colorTint` is not nil.
      The default value is 0.0.
      */
-    open var colorTintAlpha: CGFloat {
+    @objc open var colorTintAlpha: CGFloat {
         get { return _value(forKey: .colorTintAlpha) ?? 0.0 }
         set {
             if #available(iOS 14, *) {
@@ -58,7 +58,7 @@ open class VisualEffectView: UIVisualEffectView {
      
      The default value is 0.0.
      */
-    open var blurRadius: CGFloat {
+    @objc open var blurRadius: CGFloat {
         get {
             if #available(iOS 14, *) {
                 return ios14_blurRadius
@@ -82,20 +82,20 @@ open class VisualEffectView: UIVisualEffectView {
      
      The default value is 1.0.
      */
-    open var scale: CGFloat {
+    @objc open var scale: CGFloat {
         get { return _value(forKey: .scale) ?? 1.0 }
         set { _setValue(newValue, forKey: .scale) }
     }
     
     // MARK: - Initialization
     
-    public override init(effect: UIVisualEffect?) {
+    @objc public override init(effect: UIVisualEffect?) {
         super.init(effect: effect)
         
         scale = 1
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    @objc required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         scale = 1
